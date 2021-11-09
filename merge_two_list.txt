@@ -1,0 +1,48 @@
+ static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+       SinglyLinkedListNode head=null;
+               
+                while(head1 ==null || head2==null)
+                {
+                    return head1;
+                }
+                if(head1.data>=head2.data)
+                {
+                    head=head2;
+                    head2=head2.next;
+                    
+                }
+                else
+                {
+                 head=head1;
+                    head1=head1.next;
+                }
+                 SinglyLinkedListNode curr=head;
+                while(head1!=null && head2!=null)
+                {
+                    if(head1.data<head2.data)
+                    {
+                        curr.next=head1;
+                        head1=head1.next;
+                    }
+                    else
+                    {
+                        curr.next=head2;
+                        head2=head2.next;
+                    }
+                    curr=curr.next;
+                }
+                while(head1!=null)
+                {
+                    curr.next=head1;
+                    head1=head1.next;
+                    curr=curr.next;
+                }
+                while(head2!=null)
+                {
+                    curr.next=head2;
+                    head2=head2.next;
+                    curr=curr.next;
+                }
+                curr=head;
+                return curr;
+    }

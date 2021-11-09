@@ -1,0 +1,21 @@
+  static int happy(int n)
+    {
+        HashSet<Integer> seen=new HashSet<>();
+        while(n!=1)
+        {
+            int curr=n;
+            int sum=0;
+            while(curr!=0)
+            {
+                sum+=(curr%10)*(curr%10);
+                curr=curr/10;
+            }
+            if(seen.contains(sum))
+            {
+                return 0;
+            }
+            seen.add(sum);
+            n=sum;
+        }
+        return 1;
+    }

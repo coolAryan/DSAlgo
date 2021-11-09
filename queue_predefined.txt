@@ -1,0 +1,28 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    public static void print(Queue q)
+    {
+        while(!q.isEmpty())
+        {
+            System.out.print(q.peek()+" ");
+            q.remove();
+        }
+    }
+    public static void main(String[] args) {
+        Queue<Integer> q=new LinkedList<>();//It will take only integer data
+       Queue q=new LinkedList<>(); //Using this will allow us to use any kind of data be it float ,integer,string
+      Queue<Object> q=new LinkedList<>();//          same as above ""
+	q.add("Hello lovely people");
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        q.remove();
+        int a=q.size();
+        System.out.println(q);
+        System.out.println(a);
+        
+        print(q);
+    }
+}

@@ -1,0 +1,23 @@
+
+    public static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode head) {
+    // Write your code here
+                    SinglyLinkedListNode curr=head;
+                    int c=0;
+                    while(curr.next!=null )
+                    {
+                        if(curr.data==curr.next.data)
+                        {
+                            curr.next=curr.next.next;
+                            System.out.print(c++ +" ");
+                        }
+                        else
+                        {
+                            curr=curr.next;
+                        }
+                    }
+                    curr=head;
+                    return curr;
+    }
+
+
+

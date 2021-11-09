@@ -1,0 +1,106 @@
+class Prior
+{
+    int data;
+    int pri;
+   Prior(int data,int pri)
+   {
+       this.data=data;
+       this.pri=pri;
+   }
+    public int prior()
+    {
+       // System.out.println("Data "+data +" Priority "+pri);
+        return pri;
+    }
+    public int val()
+    {
+       // System.out.println("Data "+data +" Priority "+pri);
+        return data;
+    }
+}
+class Priorque
+{
+    Prior[] a;
+    int cap;
+    int last;
+    Priorque(int size)
+    {
+        a=new Prior[size];
+        cap=size;
+        last=0;
+    }
+    boolean isFull()
+    {
+        if(last==cap)
+        {
+            return true;
+        }
+        return false;
+    }
+   void enQueue(int data,int pri)
+    {
+        if(isFull())
+        {
+            System.out.println("Queue is Full");
+            return;
+        }
+        a[last]=new Prior(data,pri);
+        last++;
+    }
+    boolean isEmpty()
+    {
+        if(last==0)
+        {
+            return true;
+        }
+        return false;
+    }
+     void deQueue()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Queue is empty");
+            return;
+        }
+            int k=0;
+            int maxp=Integer.MIN_VALUE;
+        for(int i=0;i<last;i++)
+        {
+          
+            if( maxp<a[i].prior() )
+            {
+                maxp=a[i].prior();
+                k=i;
+            }
+        }
+            for(int i=k;i<last-1;i++)
+            {
+                a[i]=a[i+1];
+            }
+            last--;
+       }
+    
+        void print()
+        {
+            for(int i=0;i<last;i++)
+            {
+                System.out.println("Data "+a[i].val()+" Priority "+a[i].prior());
+            }
+        }
+     public static void main(String[] args)
+    {
+        Priorque p =new Priorque(5);
+        p.enQueue(10,4);
+        p.enQueue(20,3);
+         p.enQueue(30,5);
+        // p.deQueue();
+        //  p.deQueue();
+        //  p.deQueue();
+        p.enQueue(30,2);
+        p.enQueue(40,1);
+        p.enQueue(50,6);
+        p.print();
+    }
+        
+    }
+    

@@ -1,0 +1,187 @@
+// "static void main" must be defined in a public class.
+class HeapNode{
+    int data;
+    HeapNode left;
+    HeapNode right;
+    HeapNode parent;
+    HeapNode(int data)
+    {
+        this.parent=null;
+        this.right=null;
+        this.left=null;
+        this.data=data;
+    }
+    
+}
+
+public class Heap
+{
+    HeapNode root;
+    Heap()
+    {
+        this.root=null;
+    }
+    HeapNode Parent()
+    {
+        Queue<HeapNode>q=new LinkedList<>();
+        q.add(root);
+        HeapNode temp=root;
+        while(!q.isEmpty())
+        {
+            temp=q.peek();
+            q.remove();
+            if(temp.left!=null && temp.right!=null)
+            {
+                q.add(temp.left);
+                q.add(temp.right);
+            }
+            else
+            {
+                break;
+            }
+        }
+        return temp;
+    }
+
+    void swap(HeapNode x,HeapNode y)
+    {
+        int l=x.data;
+        x.data=y.data;
+        y.data=l;
+        
+    }
+    void upHeapify(HeapNode temp)
+    {
+        if(temp.parent==null)
+        {
+            return ;
+        }
+       
+        if(temp.parent.data<temp.data)
+        {
+            swap(temp.parent,temp);
+            upHeapify(temp.parent);
+        }
+    }
+    void downHeapify(HeapNode temp)
+    {
+        HeapNode large=temp;
+        if(temp.left!=null && temp.left.data>large.data)
+        {
+            large=temp.left;
+        }
+        if(temp.right!=null && temp.right.data>large.data)
+        {
+            large=temp.right;
+        }
+        if(temp!=large)
+        {
+            swap(large,temp);
+            downHeapify(large);
+        }
+    }
+    void add(int data)
+    {
+        HeapNode n=new HeapNode(data);
+        if(root==null)
+        {
+            root=n;
+            return ;
+        }
+        HeapNode last=Parent();
+        if(last.left==null)
+        {
+            last.left=n;
+            n.parent=last;
+        }
+        else
+        {
+             last.right=n;
+            n.parent=last;
+        }
+        upHeapify(n);
+    }
+    boolean isEmpty()
+    {
+        if(root==null)
+        {
+            return true;
+        }
+        return false;
+    }
+    HeapNode LastNode()
+    {
+       Queue<HeapNode>q=new LinkedList<>();
+        q.add(root);
+        HeapNode temp=root;
+        while(!q.isEmpty())
+        {
+            temp=q.peek();
+            q.remove();
+            if(temp.left!=null)
+            {
+                q.add(temp.left);
+            }
+            if(temp.right!=null)
+            {
+                q.add(temp.right);   
+            }
+            
+        }
+        return temp;
+    }
+    void remove()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Nothing too Delete");
+            return ;
+        }
+        HeapNode last=LastNode();
+        if(last==root)
+        {
+            root=null;
+            return;
+        }
+        swap(root,last);
+        HeapNode pr=last.parent;
+        if(pr.left==last)
+        {
+            last=null;
+            pr.left=null;
+        }
+        else
+        {
+            last=null;
+            pr.right=null;
+        }
+        downHeapify(root);
+    }
+    void inorder(HeapNode t)
+    {
+        if(t==null)
+        {
+            return ;
+        }
+        inorder(t.left);
+        System.out.println(t.data+" ");
+        inorder(t.right);
+    }
+    void print()
+    {
+        HeapNode temp=root;
+        inorder(temp);
+    }
+    public static void main(String[] args) {
+        Heap h=new Heap();
+        h.add(50);
+        h.add(70);
+        h.add(56);
+        h.add(58);
+        h.add(89);
+        h.add(46);
+        h.add(9);
+        h.remove();
+        h.print();
+    }
+}

@@ -1,0 +1,82 @@
+class LinkeList{
+    
+    LinkeList next;
+    int val;
+    LinkeList(int val)
+    {
+        this.next=null;
+        this.val=val;
+    }
+}
+public class Queu {
+    LinkeList front;
+    LinkeList rear;
+    Queu()
+    {
+        this.front=null;
+        this.rear=null;
+    }
+    public void enqueue(int val)
+    {
+        
+        LinkeList n=new LinkeList(val);
+        if(rear==null)
+        {
+            front=n;
+            rear=n;
+            return ;
+        }
+        rear.next=n;
+        rear=n;
+    }
+    public void dequeue()
+    {
+        if(front==null)
+        {
+            System.out.print("Nothing to Delete");
+            return ;
+        }
+        if(front.next==null)
+        {
+            front=null;
+            rear=null;
+            return ;
+        }
+        LinkeList temp=front;
+        front=front.next;
+    }
+    public void print()
+    {
+        if(rear==null)
+        {
+            System.out.print("Nothing ");
+            return ;
+        }
+        LinkeList s=front;
+        while(s!=null)
+        {
+            System.out.print(s.val+" ");
+            s=s.next;
+        }
+    }
+    public void fr()
+    {
+        
+        if(front==null)
+        {
+            return ;
+        }
+        System.out.println(front.val+" ");
+    }
+    public static void main(String[] args) {
+       Queu q=new Queu();
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
+        q.enqueue(4);
+        q.enqueue(5);
+        q.fr();
+        q.dequeue();
+        q.print();
+    }
+}

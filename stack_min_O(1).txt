@@ -1,0 +1,88 @@
+// "static void main" must be defined in a public class.
+public class Stac {
+    int min;
+    
+    public void add(Stack<Integer>s,int val)
+    {
+        if(s.empty())
+        {
+            s.push(val);
+            min=val;
+            return ;
+            
+        }
+        int z=s.peek();
+        if(val>=z)
+        {
+            s.push(val);
+            return ;
+        }
+        s.push(2*val-min);
+        min=val;
+        return ;
+    }
+    public void remove(Stack<Integer>s)
+    {
+        if(s.empty())
+        {
+            System.out.print("Nothing to Remove");
+            return ;
+        }
+        int z=s.peek();
+        if(z<min)
+        {
+            s.pop();
+            min=2*min-z;
+            return ;
+        }
+        s.pop();
+        return ;
+    }
+    int top(Stack<Integer>s)
+    {
+        if(s.empty())
+        {
+            System.out.print("Stack Underflow");
+            return -1;
+        }
+        int z=s.peek();
+        if(z>=min)
+        {
+            return z;
+        }
+        return min;
+    }
+     int getMin(Stack<Integer> st)
+    {
+       return min;   
+        
+    }
+    public void print(Stack<Integer> st)
+    {
+        while(!st.empty())
+        {
+            System.out.println(st.peek());
+            st.pop();
+        }
+        
+    }
+    
+    
+    
+    public static void main(String[] args) {
+       
+        Stack<Integer> st=new Stack<Integer>();
+        Stac s=new Stac();
+        s.add(st,10);
+        s.add(st,20);
+        s.add(st,30);
+        s.add(st,40);
+        s.add(st,60);
+        // s.add(st,7);
+        // s.add(st,2);
+        s.remove(st);
+          System.out.println("Top element is "+s.top(st));
+        System.out.println("Minimum element is "+s.getMin(st));
+        s.print(st);
+    }
+}

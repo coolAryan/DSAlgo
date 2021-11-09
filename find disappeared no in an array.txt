@@ -1,0 +1,37 @@
+for(int i=0;i<n;i++)
+        {
+            int c=Math.abs(a[i])-1;
+            System.out.print(c+" ");
+            if(a[c]>0)
+            {    
+            a[c]=-a[c];   
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]>0)
+            {
+                b.add(1+i);
+            }
+        }
+        return b;
+
+
+
+
+//Method--2
+
+
+ArrayList<Integer> b=new ArrayList<Integer>();
+        HashSet<Integer> s=new HashSet<Integer>();
+        for(int i:a)
+        {
+            s.add(i);
+        }
+        for(int i=1;i<=n;i++)
+        {
+            if(!s.contains(i))
+            {
+                b.add(i);
+            }
+        }

@@ -1,0 +1,86 @@
+//phead-it tracks the last node
+// Circular doubly Linked List
+public class Main {
+    public class Node
+    {
+        int data;
+        Node next;
+        Node prev;
+        Node(int d)
+        {
+            data=d;
+            this.next=null;
+            this.prev=null;
+        }
+    }
+    Node phead=null;
+    Node addFront(Node head,int data)
+    {
+        Node n=new Node(data);
+        if(head==null)
+        {
+            n.next=n;
+            n.prev=n;
+            phead=n;
+            return n;
+        }
+        //this was done using last pointer
+        // phead.next=n;
+        // n.next=head;
+        // head.prev=n;
+        // n.prev=phead;
+        n.next=head;
+        head.prev.next=n;
+        n.prev=head.prev;
+        head.prev=n;
+        return n;
+    }
+    Node addLast(Node head,int data)
+    {
+        Node n=new Node(data);
+        if(head==null)
+        {
+            
+             n.next=n;
+            n.prev=n;
+            phead=n;
+            return n;
+        }
+        head.prev.next=n;
+        n.prev=head.prev;
+        n.next=head;
+        head.prev=n;
+        return head;
+        
+    }
+    
+    public void print(Node head)
+    {
+        Node curr=head;
+        if(head!=null)
+        {
+            do
+            {
+                System.out.print(curr.data+" ");
+                curr=curr.next;
+            }
+            while(head!=curr);
+        }
+    }
+    public static void main(String[] args) 
+    {
+        Main obj=new Main();
+        Node head=null;     
+        head=obj.addFront(head,2);
+        head= obj.addFront(head,23);
+         head= obj.addFront(head,12);
+        head= obj.addFront(head,31);
+         head= obj.addFront(head,52);
+          head=obj.addLast(head,24);
+          head=obj.addLast(head,42);
+         head=obj.addLast(head,29);
+         head=obj.addLast(head,22);
+        obj.print(head);
+        
+    }
+}

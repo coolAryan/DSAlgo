@@ -1,0 +1,31 @@
+    static void arm(int n)
+    {  
+        int k=0;
+     for(int i=1;i<=Integer.MAX_VALUE;i++)
+     {
+        int tem=i;
+        int c=(int)Math.log10(tem)+1;
+        int rem;
+        double sum=0;
+        while(tem!=0)
+        {
+            rem=tem%10;
+            sum=sum+Math.pow(rem,c);
+            tem=tem/10;
+        }
+        if (sum==i)
+        {
+           k++;
+        }
+       if(k==n)
+       {
+           System.out.println(i+" ");
+           return ;
+       }
+        
+     }
+    }
+ public static void main(String[] args) {
+  
+        arm(13);
+    }

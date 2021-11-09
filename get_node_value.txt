@@ -1,0 +1,18 @@
+ public static int getNode(SinglyLinkedListNode llist, int positionFromTail) {
+    // Write your code here
+        SinglyLinkedListNode curr=llist;
+        int length=0;
+        while(curr!=null)
+        {
+            curr=curr.next;
+            length++;
+        }
+        
+       int k=length-positionFromTail;
+       curr=llist;
+       for(int i=1;i<k;i++)
+       {
+           curr=curr.next;
+       }
+       return curr.data;
+    }

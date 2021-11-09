@@ -1,0 +1,129 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    
+    int linearSearch(int a[],int x)
+    {
+        int n=a.length;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]==x)
+            {
+                int pos=i+1;
+                System.out.print("Index is "+i+" "+"Position is ");
+                return pos;
+            }
+        }
+        return -1;
+    }
+    int binarySearch(int a[],int l,int r,int x)
+    {
+          
+        //System.out.print(x);
+        while(l<=r)
+            {
+            int m=(l+r)/2; 
+                if(a[m]==x)
+                {
+                    return m;
+                }
+                else if(a[m]<x)
+                {
+                    l=m+1;
+                }
+                else {
+                    
+                    r=m-1;
+                }                
+            }
+        return -1;
+    }
+    void selectionSort(int arr[])
+        {
+            int n=arr.length;
+             System.out.print("Selection Sort ");
+            for(int i=0;i<n-1;i++)
+            {   int min =i;
+                for(int j=i+1;j<n;j++)
+                {
+                    if(arr[min]>arr[j])
+                    {
+                        min=j;
+                    }
+                }
+                 if(min!=i)
+                 {
+                     int temp=arr[min];
+                     arr[min]=arr[i];
+                     arr[i]=temp;
+                 }
+            }
+   void bubbleSort(int a[])
+        {
+            int n=a.length;
+            int flag=0;
+             System.out.print("Bubble Sort ");
+            for(int i=0;i<n-1;i++)
+            {
+                
+                for(int j=0;j<n-i-1;j++)
+                {
+                    if(a[j]>a[j+1])
+                    {
+                        flag=1;
+                        int temp=a[j];
+                        a[j]=a[j+1];
+                        a[j+1]=temp;
+                    }
+                }
+                if(flag==0)
+                {
+                    break;
+                }
+            }
+        }
+     
+    
+    
+    int insertionSort(int a[],int n)
+    {
+        for(int i=1;i<n;i++)
+        {
+            int key=a[i];
+           int j=i-1;
+            
+            while(j>=0 && a[j]>key)
+            {
+                a[j+1]=a[j];
+                j=j-1;
+            }
+            a[j+1]=key;
+        }
+        return 0;
+    }
+    static void print(int a[])
+    {
+        for(int i=0;i<a.length;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+    }
+    public static void main(String[] args) 
+    {
+     
+      
+       //  Main obj=new Main();
+       //int a[]={7,8,2,3,5};
+        //int arr[]={1,9,4,2,7};
+        //obj.bubbleSort(a);
+        //print(a);
+        //obj.selectionSort(arr);
+        //print(arr);
+
+        obj.insertionSort(a);
+        print(a);
+        //int b=obj.linearSearch(a,0);
+       // int b=obj.binarySearch(a,0,n-1,4);
+        //System.out.print(b);
+        
+    }
+}

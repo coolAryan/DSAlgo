@@ -1,0 +1,69 @@
+// Circular Linked List
+public class Main {
+    public class Node
+    {
+        int data;
+        Node next;
+        Node(int d)
+        {
+            data=d;
+            this.next=null;
+        }
+    }
+    Node phead=null;
+    Node addFront(Node head,int data)
+    {
+        Node n=new Node(data);
+        if(head==null)
+        {
+            n.next=n;
+            phead=n;
+            return n;
+        }
+        n.next=head;
+        phead.next=n;
+        return n;
+    }
+    Node addLast(Node head,int data)
+    {
+        Node n=new Node(data);
+        if(head==null)
+        {
+            n.next=n;
+            phead=n;
+            return n;
+        }
+        //n.next=head;
+        phead.next=n;
+       n.next=head;
+      phead=n;
+        
+        return head;
+    }
+    
+    public void print(Node head)
+    {
+        Node curr=head;
+        if(head!=null)
+        {
+            do
+            {
+                System.out.print(curr.data+" ");
+                curr=curr.next;
+            }
+            while(head!=curr);
+        }
+    }
+    public static void main(String[] args) 
+    {
+        Main obj=new Main();
+        Node head=null;     
+        head=obj.addFront(head,2);
+        head= obj.addFront(head,12);
+         head=obj.addLast(head,24);
+        head=obj.addLast(head,42);
+        
+        obj.print(head);
+        
+    }
+}

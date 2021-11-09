@@ -1,0 +1,260 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    public class Node
+    {
+        int data;
+        Node next;
+        Node(int d)
+        {
+            data=d;
+            this.next=null;
+        }
+    }
+    Node head;
+    Node addFront(int data)
+    {
+        Node n=new Node(data);
+        if(head==null)
+        {
+            head=n;
+            return head;
+        }
+        // Node temp=head;
+        // head=n;
+        // head.next=temp;
+        n.next=head;
+        head=n;
+         return head;
+    }
+    Node addatpos(int pos,int data)
+    {
+        Node n=new Node(data);
+        Node curr=head;
+        if(pos==0)
+        {
+            head=n;
+            head.next=curr;
+        }
+        else
+        {
+            for(int i=1;i<pos;i++)
+            {
+                curr=curr.next;
+            }
+            n.next=curr.next;
+            curr.next=n;
+        }
+        return head;
+    }
+    Node addNodeafter(int after,int d)
+    {
+        Node n=new Node(d);
+        if(head==null)
+        {
+            n.next=null;
+            return n;
+        }
+        Node curr=head;
+        while(curr.next!=null && curr.data!=after)
+        {
+            curr=curr.next;
+        }
+        n.next=curr.next;
+        curr.next=n;
+        return head;
+    }
+    void middleNode()
+    {
+        Node curr=head;
+        int length=0;
+        while(curr!=null)
+        {
+            curr=curr.next;
+            length++;
+        }
+        curr=head;
+        for(int i=1;i<length/2;i++)
+        {
+            curr=curr.next;
+        }
+        curr=curr.next;
+        System.out.print("\n"+curr.data+" ");
+    }
+    Node addLast(int data)
+    {
+        Node n=new Node(data);
+        n.next=null;
+        if(head==null)
+        {
+            head=n;
+            return head;
+        }
+        Node curr=head;
+        while(curr.next!=null)
+        {
+            curr=curr.next;
+        }
+        curr.next=n;
+        return head;
+    }
+    Node deleteFront()
+    {
+        if(head==null)
+        {
+            System.out.print("Nothing to Delete");
+            return head;
+        }
+        Node temp=head;
+        head=head.next;
+        return head;
+    }
+    Node deleteLast()
+    {
+        if(head==null)
+        {
+            System.out.print("Nothing to Delete");
+            return head;
+        }
+       
+        if(head.next==null)
+        {
+            head=null;
+            return head;
+        }
+         Node curr=head;
+        while(curr.next.next!=null)
+        {
+            curr=curr.next;
+        }
+        Node temp=curr.next;
+        curr.next=null;
+        temp=null;
+        return head;
+        
+    }
+    Node deleteGivenvalue(int val)
+    {
+        
+        if(head==null)
+        {
+            System.out.print("Nothing to Delete");
+            return head;
+        }
+        if(head.data==val)
+        {
+            Node temp=head;
+            head=head.next;
+            temp=null;
+            return head;
+        }
+        Node curr=head;
+        while(curr.next!=null && curr.next.data!=val)
+        {
+                curr=curr.next;
+        }
+        if(curr.next==null)
+        {
+            System.out.print("Value not found\n");
+            return head;
+            
+        }
+        
+        Node temp=curr.next;
+        curr.next=temp.next;
+        temp=null;
+        return head;
+    }
+    Node reverse()
+    {
+        if(head==null || head.next==null)
+        {
+            return head;
+        }
+        
+        Node rev=null;
+        while(head!=null)
+        {
+            Node temp=head;
+            head=head.next;
+            temp.next=rev;
+            rev=temp;
+        }
+        head=rev;
+        return rev;
+    }
+    Node rev2()
+    {
+         if(head==null)
+         {
+             return head;
+         }
+          Node rev=null;
+        Node curr=head;
+        while(curr!=null)
+        {
+          rev=  addFront(curr.data);
+            curr=curr.next;
+        }
+       // head=rev;
+        return rev;  
+    }
+    Node deleteAtPos(int pos)
+    {
+        if(pos==0)
+        {
+            Node temp=head;
+            head=head.next;
+            temp=null;
+            return head;
+        }
+        Node curr=head;
+        for(int i=1;i<pos;i++)
+        {
+            curr=curr.next;
+        }
+        Node temp=curr.next;
+        curr.next=temp.next;
+        temp=null;
+        return head;
+        
+    }
+    public void print()
+    {
+        Node curr=head;
+        if(head==null)
+        {
+            System.out.print("Empty");
+        }
+        while(curr!=null)
+        {
+            System.out.print(curr.data+" ");
+            curr=curr.next;
+        
+        }
+    
+    
+    }
+    public static void main(String[] args) {
+        Main obj=new Main();
+       // obj.deleteFront();
+        obj.addFront(2);
+        obj.addFront(12);
+        obj.addFront(21);
+        obj.addLast(33);
+        obj.addLast(83);
+        // obj.addatpos(4,56);
+        // obj.addatpos(0,6);
+       // obj.addatpos(7,5);
+       // obj.addNodeafter(0,99);
+        // obj.deleteFront();
+        // obj.deleteFront();
+        // obj.deleteFront();
+        //obj.deleteAtPos(1);
+        //obj.reverse();
+        obj.rev2();
+       // obj.deleteGivenvalue(21);
+        //obj.deleteLast();
+        obj.print();
+        //obj.middleNode();
+    }
+}

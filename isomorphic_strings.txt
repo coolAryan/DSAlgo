@@ -1,0 +1,49 @@
+ static int size=256;
+    static int isomorphic(String str1,String str2)
+    {
+        int m=str1.length();
+        int n=str2.length();
+        if(m!=n)
+        {
+            return 0;
+        }
+        int count1[]=new int[size];
+        int count2[]=new int[size];
+        // for(int i=0;i<n;i++)
+        // {
+        //     count1[str1.charAt(i)]++;
+        //     System.out.println();
+        //     System.out.print("String1 "+str1.charAt(i)+" "+count1[str1.charAt(i)]+" ");
+        //     count2[str2.charAt(i)]++;
+        //     System.out.println();
+        //      System.out.print("String2 "+str2.charAt(i)+" "+count2[str2.charAt(i)]+" ");
+        //     if(count1[str1.charAt(i)]!= count2[str2.charAt(i)])
+        //     {
+        //         return 0;
+        //     }
+        // }
+        for(int i=0;i<n;i++)
+         {
+            if((count1[str1.charAt(i)]==0) && (count2[str2.charAt(i)]==0 ))
+            {
+                count1[str1.charAt(i)]=str2.charAt(i);
+                count2[str2.charAt(i)]=str1.charAt(i);
+            }
+            else if(count1[str1.charAt(i)]!=str2.charAt(i))
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+
+
+  public static void main(String[] args) {
+
+ int r= isomorphic("aba","xxy");
+        System.out.println();
+        System.out.println(r+" ");
+
+
+}

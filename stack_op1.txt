@@ -1,0 +1,124 @@
+public class Main {
+    static void print(Stack<Integer> s )
+    {
+        
+        while(!s.empty())
+        {
+            System.out.print(s.peek()+" ");
+            s.pop();
+        }
+    }
+    public static void reverse(String k)
+    {
+        Stack<Character> p=new Stack<Character>();
+        for(int i=0;i<k.length();i++)
+        {
+            p.push(k.charAt(i));
+        }
+        while(!p.empty())
+        {
+            System.out.print(p.peek());
+            p.pop();
+        }
+    }
+    public static void add(Stack<Integer>m,Stack<Integer>a,int data)
+    {
+        if(m.empty())
+        {
+            m.push(data);
+            a.push(data);
+            return;
+        }
+        int z=a.peek();
+        if(z>data)
+        {
+            m.push(data);
+            a.push(data);
+        }
+        else
+        {
+            m.push(data);
+            a.push(z);
+        }
+    }
+    static void print1(Stack<Integer> m,Stack<Integer> a)
+    {
+        System.out.println("Main Stack ");
+        while(!m.empty())
+        {
+            System.out.print(m.peek()+" ");
+            m.pop();
+        }
+        System.out.println();
+        System.out.println("Auxxilary Stack ");
+        while(!a.empty())
+        {
+            System.out.print(a.peek()+" ");
+            a.pop();
+        }
+    }
+    static void remove(Stack<Integer>m,Stack<Integer>a)
+    {
+        if(m.empty())
+        {
+            System.out.print("stack is empty");
+            return;
+        }
+        a.pop();
+        m.pop();
+        
+    }
+    static int getmin(Stack<Integer> a)
+    {
+        if(a.empty())
+        {
+            return -1;
+        }
+        return a.peek();
+    }
+    public static void main(String[] args) {
+       // Stack<Integer> s=new Stack<Integer>();
+        // s.push(10);
+        // s.push(20);
+        // s.push(30);
+        // print(s);
+        
+        //String a="Hello";
+        //reverse(a);
+       // System.out.print(rev);
+//         Stack<Stack<Integer>> st=new Stack<Stack<Integer>>();
+//         Stack<Integer> d=new Stack<Integer>();
+        
+//         d.push(10);
+//         d.push(20);
+//         d.push(30);
+//         st.push(d);
+//         Stack<Integer> f=new Stack<Integer>();
+       
+//         f.push(40);
+//         f.push(50);
+//         st.push(f);
+//         while(!st.empty())
+//         {
+//             Stack<Integer> q=st.peek();
+//             while(!q.empty())
+//             {
+//                 System.out.print(q.peek()+ " ");
+//                 q.pop();
+//             }
+//             st.pop();
+            
+//         }       
+        Stack<Integer> a=new Stack<Integer>();
+        Stack<Integer> m=new Stack<Integer>();
+        add(m,a,10);
+        add(m,a,11);
+        add(m,a,7);
+        add(m,a,4);
+        remove(m,a);
+        int q=getmin(a);
+        System.out.println("Minimum element is "+q);
+         print1(m,a);
+        
+    }
+}

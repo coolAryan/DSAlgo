@@ -1,0 +1,257 @@
+//phead-it tracks the last node
+// Doubly Linked List
+public class Main {
+    public class Node
+    {
+        int data;
+        Node next;
+        Node prev;
+        Node(int d)
+        {
+            data=d;
+            this.next=null;
+            this.prev=null;
+        }
+    }
+    Node phead=null;
+    Node addFront(Node head,int data)
+    {
+        Node n=new Node(data);
+        n.prev=null;
+        if(head==null)
+        {
+            n.next=null;
+            phead=n;
+            return n;
+        }
+        n.next=head;
+        head.prev=n;
+         return n;
+    }
+    
+    Node addatpos(Node head,int data,int pos)
+    {
+        Node n=new Node(data);
+        Node curr=head;
+        if(pos==0)
+        {
+            n.prev=null;
+            n.next=curr;
+            curr.prev=n;
+            return n;
+        }
+        for(int i=1;i<pos;i++)
+        {
+            curr=curr.next;
+        }
+        if(curr.next==null)
+        {
+            curr.next=n;
+            n.prev=curr;
+            phead=n;
+            n.next=null;
+            return head;
+        }
+        Node temp=curr.next;
+        n.next=temp;
+        temp.prev=n;
+        n.prev=curr;
+        curr.next=n;  
+         return head;
+    }
+    
+    Node addLast(Node head,int data)
+    {
+        Node n=new Node(data);
+        n.next=null;
+        if(head==null)
+        {
+            n.prev=null;
+            phead=n;
+            return n;
+        }
+        Node curr=head;
+        while(curr.next!=null)
+        {
+            curr=curr.next;
+        }
+        // n.prev=curr;
+        // curr.next=n;
+        phead.next=n;
+        n.prev=phead;
+        phead=n;
+         return head;
+    }
+    
+     Node deleteFront(Node head)
+    {
+       
+        if(head==null)
+        {
+           System.out.print("Nothing to delete\n");
+            return head;
+        }
+         if(head.next==null)
+         {
+             head=null;
+             phead=null;
+             return head;
+         }
+         Node temp=head;
+         head=head.next;
+         temp=null;
+         head.prev=null;
+         return head;
+       
+    }
+    
+    Node deleteLast(Node head)
+    {
+        if(head==null)
+        {
+           System.out.print("Nothing to delete\n");
+            return head;
+        }
+         if(head.next==null)
+         {
+             head=null;
+                phead=null;
+             return head;
+         }
+        // Node curr=head;
+        // while(curr.next.next!=null)
+        // {
+        //     curr=curr.next;
+        // }
+        // Node temp=curr.next;
+        // curr.next=null;
+        // temp=null;
+        // return head;    
+        Node temp=phead;
+        phead=phead.prev;
+        phead.next=null;
+        temp=null;
+        // phead.next=null;
+         return head;
+    }
+    
+    Node deleteAtPos(Node head,int pos)
+    {
+        Node curr=head;
+        if(pos==0)
+        {
+            Node temp=head;
+            head=head.next;
+            head.prev=null;
+            temp=null;
+            return head;
+        }
+        for(int i=1;i<pos;i++)
+        {
+            curr=curr.next;
+        }
+        if(curr.next.next==null)
+        {
+            Node t=curr.next;
+            curr.next=null;
+            t=null;
+            return head;
+        }
+        Node temp=curr.next;
+        curr.next=temp.next;
+        temp.next.prev=curr;
+        temp=null;
+         return head;
+    }
+    
+    Node deleteGivenval(Node head,int val)
+    {
+        Node curr=head;
+        if(head==null)
+        {
+            System.out.println("Value Not Found");
+            return head;
+        }
+        if(head.data==val)
+        {
+            Node temp=head;
+            head=head.next;
+            head.prev=null;
+            temp=null;
+            return head;
+        }
+        while(curr.next!=null && curr.next.data!=val)
+        {
+            curr=curr.next;
+        }
+        if(curr.next==null)
+        {
+            System.out.print("Value Not Found\n");
+            return head;
+        }
+        Node temp=curr.next;
+        curr.next=temp.next;
+        if(curr.next!=null)
+        {       
+            temp.next.prev=curr;
+        }
+        return head;
+    }
+    
+
+    public void print(Node head)
+    {
+        Node curr=head;
+        Node last=head;
+        // if(head==null)
+        // {
+        //     System.out.print("Empty");
+        // }
+        while(curr!=null)
+        {
+            System.out.print(curr.data+" ");
+            last=curr;
+            curr=curr.next;
+        }
+        System.out.println("\nReverse List ");
+        while(last!=null)
+        {
+            System.out.print(last.data+" ");
+            last=last.prev;
+        }
+    }
+    public static void main(String[] args) {
+        Main obj=new Main();
+        Node head=null;
+       // obj.deleteFront();
+       
+        head=obj.addFront(head,2);
+       head= obj.addFront(head,12);
+        // head=obj.deleteFront(head);
+        head=obj.addFront(head,21);
+        head=obj.addLast(head,23);
+       head=obj.addLast(head,33);
+        head=obj.addatpos(head,9,0);
+        head=obj.addatpos(head,91,6);
+        head=obj.addatpos(head,78,2);
+        head=obj.deleteGivenval(head,3);
+        //head=obj.deleteLast(head);
+         // head=obj.deleteLast(head);
+       // head=obj.deleteFront(head);
+        // obj.addLast(83);
+        // obj.addatpos(4,56);
+        // obj.addatpos(0,6);
+       // obj.addatpos(7,5);
+       // obj.addNodeafter(0,99);
+        
+        // obj.deleteFront();
+        // obj.deleteFront();
+      // head=obj.deleteAtPos(head,6);
+        //obj.reverse();
+        // obj.rev2();
+       // obj.deleteGivenvalue(21);
+        //obj.deleteLast();
+        obj.print(head);
+        //obj.middleNode();
+    }
+}

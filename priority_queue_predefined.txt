@@ -1,0 +1,32 @@
+
+class Priorityque
+{
+public static void print(PriorityQueue p)
+{
+    while(!p.isEmpty())
+    {
+        System.out.println(p.peek());
+        p.poll();
+    }
+}
+    
+    
+
+     public static void main(String[] args)
+    {
+         PriorityQueue<Integer> p=new PriorityQueue<Integer>();
+         p.add(13);
+         // p.poll();
+          p.add(12);
+          p.add(14);
+         // p.add(16);
+         p.add(1);
+         // p.add(6);
+        p.poll();
+         p.poll();
+         System.out.println("Top Element "+p.peek()+" ");
+         print(p);
+    }
+        
+    }
+    

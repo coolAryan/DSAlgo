@@ -1,0 +1,51 @@
+// "static void main" must be defined in a public class.
+public class Queu {
+      Stack<Integer> a=new Stack<Integer>();
+        Stack<Integer> s=new Stack<Integer>();  
+    public void enqueue(int value)
+    {
+        while(!s.empty())
+        {
+            int t=s.pop();
+            
+            a.push(t);   
+        }
+        if(s.empty())
+        {
+            s.push(value);
+        }
+        while(!a.empty())
+        {
+          int q=a.pop();
+            s.push(q);
+        }
+    }
+      void dequeue()
+     {
+         if(s.empty())
+         {
+             System.out.println("Nothing to Delete");
+             return;
+         }
+         s.pop();
+     }
+    void print()
+    {
+       Stack<Integer>z=s;
+        while(!z.empty())
+        {
+            System.out.print(z.pop()+" ");  
+        }
+    }
+    
+    public static void main(String[] args) {
+      
+        Queu q=new Queu();
+        q.enqueue(10);
+        q.enqueue(20);
+        q.enqueue(30);
+        q.enqueue(40);
+        q.enqueue(50);
+        q.print();
+    }
+}

@@ -1,0 +1,82 @@
+ static void pallendrome(String s)
+   {
+       int n=s.length();
+       int flag=1;
+      for(int i=0;i<n/2;i++)
+      {
+          if(s.charAt(i)!=s.charAt(n-1-i))
+          {
+              flag=0;
+              break;
+          }
+      }
+       if(flag==0)
+       {
+           System.out.println("Not a Pallendrome");
+       }
+       else
+       {
+            System.out.print("Pallendrome");
+       }
+       
+       
+       }
+
+
+ static void pallendrome(int s)
+   {
+       int rev,int sum=0;
+     int temp=s;
+   while(temp!=0)
+{
+
+
+rev=temp%10;
+sum=sum*10+rev;
+temp=temp/10;
+
+}
+       if(sum==s)
+       {
+           System.out.print("Pallendrome");
+       }
+       else
+       {
+             System.out.print("Not a Pallendrome");
+       }
+       
+       
+       
+       }
+
+
+static void pallendrome(String s)
+   {
+       int n=s.length();
+       System.out.println(s+" ");
+       StringBuffer st=new StringBuffer(s);
+        System.out.println("st "+st+" ");
+       String q=(st.reverse()).toString();
+        System.out.println(q+" ");
+       if(q.equals(s))
+       {
+           System.out.print("Pallendrome");
+       }
+       else
+       {
+             System.out.print("Not a Pallendrome");
+       }
+       
+       
+       
+       }
+
+
+
+ public static void main(String[] args) {
+      
+        int n=313;
+        String z=String.valueOf(n);
+        pallendrome("naman");
+pallendrome(z);
+    }

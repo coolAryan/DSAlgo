@@ -1,0 +1,35 @@
+ Scanner s=new Scanner(System.in);
+        int t=s.nextInt();
+        int arr[]={6,2,5,5,4,5,6,3,7,6};
+        StringBuffer st=new StringBuffer("");
+        while(t--!=0)
+        {
+            int count=0;
+             String str=s.next();
+            for(int i=0;i<str.length();i++)
+            {
+                count=count+arr[str.charAt(i)-'0'];
+            }
+            if(count%2==1)
+            {
+                    st.append('7');
+                    count=count-3;
+                    for(int i=0;i<count;i=i+2)
+                    {
+                        st.append('1');
+                    }
+            }
+            else
+            {
+                for(int i=0;i<count;i=i+2)
+                    {
+                        st.append('1');
+                    }
+            }
+            st.append("\n");
+        }
+        System.out.println(st+" ");
+        // Write your code here
+
+    }
+}

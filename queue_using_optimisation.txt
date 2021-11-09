@@ -1,0 +1,103 @@
+// "static void main" must be defined in a public class.
+public class Queu {
+    
+     int cap,front,rear;
+    int a[];
+    Queu(int size)
+    {
+        cap=size;
+        a=new int[size];
+        rear=-1;
+        front=-1;
+    }
+    public void enqueue(int val)
+    {
+        if(isFull())
+        {
+            System.out.println("Queue is Full");
+            return ;
+        }
+        if(rear==-1)
+        {
+            rear=0;
+            front=0;
+            a[rear]=val;
+            return ;
+        }
+        rear=(rear+1)%cap;
+        
+        a[rear]=val;
+        return ;
+    }
+    public void dequeue()
+    {
+        if(isEmpty())
+        {
+          System.out.println("Nothing to Delete");
+            return ;
+        }
+       if(rear==front)
+        {
+            rear=-1;
+            front=-1;
+            
+            return ;
+        }
+       front=(front+1)%cap;
+        
+    }
+   
+    public void print()
+    {
+        if(rear>front)
+        {
+            for(int i=front;i<=rear;i++)
+            {
+                System.out.print(a[i]+" ");
+            }
+        }
+        else
+        {
+             for(int i=front;i<cap;i++)
+            {
+                System.out.print(a[i]+" ");
+            }
+             for(int i=0;i<=rear;i++)
+            {
+                System.out.print(a[i]+" ");
+            }
+        }
+    }
+    boolean isEmpty()
+    {
+        if(rear==-1)
+        {
+            return true;
+        }
+        return false;
+        
+    }
+    boolean isFull()
+    {
+       if( (front==0 && rear==cap-1) || (rear==front-1)   )
+       {
+          return true; 
+       }
+        return false;
+        
+    }
+    
+    public static void main(String[] args) {
+       Queu q=new Queu(5);
+        q.dequeue();
+       q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
+        q.enqueue(4);
+        q.enqueue(5);
+        q.enqueue(13);
+        q.enqueue(41);
+          q.dequeue();
+        q.print();
+    }
+}
