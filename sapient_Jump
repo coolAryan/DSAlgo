@@ -1,0 +1,76 @@
+// "static void main" must be defined in a public class.
+public class Main {
+//Problem-2 
+    static int moves(int t,int s,int d,int f,int b)
+    {
+        int steps=0;
+        if(s==d)
+        {
+            return steps;
+        }
+       
+        while(s!=d)
+        {
+            if(s>d)
+            {
+                s=s-b;
+                steps++;
+            }
+            else if(s<d)
+            {
+                s=s+f;
+                steps++;
+            }
+             if(s>t || s<0 )
+            {
+                return -1;
+            }
+            if(steps>t)
+            {
+                return -1;
+            }
+            
+        }
+        return steps;
+        
+    }
+    
+    //Problem-1
+    
+    static int getTime(int[] produce,int[] polish)
+    {
+      int time=produce[0];
+        for(int i=0;i<produce.length-1;i++)
+        {
+            if(polish[i]>=produce[i+1])
+            {
+                time+=polish[i];
+            }
+            else
+            {
+                time+=produce[i+1];
+            }
+        }
+        time+=polish[polish.length-1];
+        return time;   
+    }
+    public static void main(String[] args) {
+      Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+      int produce[]=new int[3];
+        for(int i=0;i<n;i++)
+        {
+            produce[i]=s.nextInt();
+        }
+        int polish[]=new int[3];
+        for(int i=0;i<n;i++)
+        {
+            polish[i]=s.nextInt();
+        }
+            
+      int res=getTime(produce,polish);
+        System.out.print(res+" ");
+        System.out.print(moves(64,5,9,8,6)+" ");
+        
+    }
+}
