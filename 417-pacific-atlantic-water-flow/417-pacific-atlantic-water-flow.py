@@ -1,5 +1,5 @@
 def getflow(heights,q,m,n):
-    ans=set(q)
+    ans=set()
     while len(q):
         y,x=q.pop(0)
         ans.add((y,x))
