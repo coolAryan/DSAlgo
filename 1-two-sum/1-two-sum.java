@@ -3,7 +3,7 @@ class Solution {
       
         int n=nums.length;
         int b[]=new int[2];
-        for(int i=0;i<n;i++)
+        for(int i=0;i<n-1;i++)
         {
             for(int j=i+1;j<n;j++)
                 {
@@ -12,7 +12,7 @@ class Solution {
                      {
                         b[0]=i;
                         b[1]=j;
-                        break;
+                        return b;
                      }   
                 }
         }
