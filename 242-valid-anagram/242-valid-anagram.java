@@ -4,10 +4,22 @@ class Solution {
         {
             return false;
         }
-        char [] s1=s.toCharArray();
-        char [] t1=t.toCharArray();
-        Arrays.sort(s1);
-        Arrays.sort(t1);
-        return Arrays.equals(s1,t1);
+        int count[]=new int[26];
+        for(char s1:s.toCharArray())
+        {
+            count[s1-'a']++;
+        }
+         for(char t1:t.toCharArray())
+        {
+            count[t1-'a']--;
+        }
+        for(int i=0;i<26;i++)
+        {
+            if(count[i]!=0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
