@@ -2,7 +2,7 @@ class Solution {
     public List<Integer> findAnagrams(String s, String p) {
         
         ArrayList<Integer>list=new ArrayList<>();
-        int hash[]=new int[256];
+        int hash[]=new int[128];
         int count=p.length();
         int st=0;
         int e=0;
