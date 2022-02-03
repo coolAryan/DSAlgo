@@ -1,38 +1,30 @@
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
-        int n=Math.min(nums1.length,nums2.length);
-        // System.out.println(n);
+        Map<Integer,Integer>m=new HashMap<>();
         ArrayList<Integer> a=new ArrayList<>();
-        
-        int i=nums1.length-1;
-        int j=nums2.length-1;
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-         System.out.println(i+" "+j);
-        while(i>=0 && j>=0)
+        for(int i=0;i<nums1.length;i++)
         {
-             System.out.println(nums1[i]+" "+nums2[j]);
-            if(nums1[i]==nums2[j])
+            if(m.containsKey(nums1[i]))
             {
-                a.add(nums1[i]);
-                 System.out.println(a);
-                i--;
-                j--;
-                
+                m.put(nums1[i],m.get(nums1[i])+1);
             }
-            else if(i>=0 && j>=0 && nums1[i]>nums2[j])
+            else
             {
-                i--;
+                m.put(nums1[i],1);
             }
-           else if(i>=0 && j>=0 && nums1[i]<nums2[j])
+        }
+        for(int i=0;i<nums2.length;i++)
+        {
+            if(m.containsKey(nums2[i])&& m.get(nums2[i])>0)
             {
-                j--;
+                a.add(nums2[i]);
+             m.put(nums2[i],m.get(nums2[i])-1);
             }
         }
         int b[]=new int[a.size()];
-        for(int l=0;l<b.length;l++)
+        for(int i=0;i<a.size();i++)
         {
-            b[l]=a.get(l);
+            b[i]=a.get(i);
         }
         return b;
     }
