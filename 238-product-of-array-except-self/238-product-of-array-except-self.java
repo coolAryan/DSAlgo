@@ -8,9 +8,6 @@ class Solution {
         {
            
             answer[i]=nums[i-1]*answer[i-1];
-           
-            
-             
             
         }
         int temp=1;
