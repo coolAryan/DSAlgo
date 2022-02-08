@@ -3,22 +3,21 @@ class Solution {
         
         int n=matrix.length;
         int m=matrix[0].length;
-        int i=0;
-        int j=m-1;
-        while(i<n && j>=0)
+        int low=0;
+        int high=m*n-1;
+        while(low<=high)
         {
-         int p=matrix[i][j];
-            if(p==target)
+            int mid=(low+high)/2;
+            if(matrix[mid/m][mid%m]==target)
             {
                 return true;
             }
-            else if(p>target)
+            else if(matrix[mid/m][mid%m]<target)
             {
-                j--;
+                low=mid+1;
             }
-            else
-            {
-                i++;
+            else{
+                high=mid-1;
             }
         }
         return false;
