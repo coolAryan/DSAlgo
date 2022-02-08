@@ -3,28 +3,23 @@ class Solution {
         
         int n=matrix.length;
         int m=matrix[0].length;
-        for(int i=0;i<n;i++)
+        int i=0;
+        int j=m-1;
+        while(i<n && j>=0)
         {
-            int k=0;
-            int j=m;
-         while(k<j)
-         {
-          int mid=(k+j)/2;   
-           if(target==matrix[i][mid])
-           {
-               return true;
-           }
-            else if(target>matrix[i][mid])
+         int p=matrix[i][j];
+            if(p==target)
             {
-                k=mid+1;
+                return true;
             }
-             else
-             {
-                 j=mid;
-                 
-             }
-        }
-            
+            else if(p>target)
+            {
+                j--;
+            }
+            else
+            {
+                i++;
+            }
         }
         return false;
     }
