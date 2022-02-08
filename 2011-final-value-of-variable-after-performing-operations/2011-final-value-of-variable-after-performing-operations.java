@@ -5,7 +5,7 @@ class Solution {
         {
             String s=operations[i];
             // System.out.print(s+" ");
-           if(s.equals("++X")||s.equals("X++"))
+           if(s.charAt(1)=='+')
            {
                sum+=1;
                System.out.print(s+" ");
